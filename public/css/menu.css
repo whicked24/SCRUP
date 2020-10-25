@@ -1,0 +1,37 @@
+#menu {
+	background-color: #333;
+}
+
+#menu>ul>li a {
+	color: #fff !important;
+}
+
+#menu>ul>li a:hover {
+	background-color: #fff;
+	color: #000 !important;
+}
+
+.navbar {
+	background-color: #F00;
+}
+
+.navbar .dropdown-menu a,
+.navbar a {
+	color: #FFF !important;
+}
+
+#DatosPersonales th {
+	text-align: center;
+}
+
+.navbar-nav>.open>a {
+	background-color: #FF6D6D !important;
+}
+
+.navbar-nav>li>.dropdown-menu {
+	background-color: #F00 !important;
+}
+
+.navbar-nav>li>.dropdown-menu a:hover{
+	background-color: #FF6D6D !important;
+}
