@@ -152,7 +152,8 @@
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
 <script src="{{ asset('js/datatables.min.js') }}"></script>
-<script src="{{ asset('js/sweetalert2.js') }}"></script>
+<script src="{{ asset('js/sweetalert2.js') }}"></script>.js
+<script src="{{ asset('js/validata_data_form.js') }}"></script>.js
  <script>
        var table = $('#datatable').DataTable({
     language: {

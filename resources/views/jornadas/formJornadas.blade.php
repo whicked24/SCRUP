@@ -58,7 +58,7 @@
 <div class="col-md-6">
   <div class="form-group">
     <label for="asunto">Asunto</label>
-   <input type="text" id="asunto" name="asunto" class="form-control" maxlength="100" value="<?php if (isset($data) && $data!="") { echo $data[0]->asunto; }?>">
+   <input type="text" id="asunto"  onKeyPress='return validarLETRA(event)' name="asunto" class="form-control" maxlength="100" value="<?php if (isset($data) && $data!="") { echo $data[0]->asunto; }?>"onKeyUp="this.value=this.value.toUpperCase();" >
   </div>
 </div>
 
@@ -67,7 +67,7 @@
 	
     <div class="form-group">
     <label for="descripcion">Descripcion</label>
-  <input type="text" id="descripcion" name="descripcion" class="form-control" maxlength="100" value="<?php if (isset($data) && $data!="") { echo $data[0]->descripcion; }?>">
+  <input type="text" id="descripcion" name="descripcion" class="form-control" maxlength="100" value="<?php if (isset($data) && $data!="") { echo $data[0]->descripcion; }?>" onKeyUp="this.value=this.value.toUpperCase();">
   </div>
 </div>
 
@@ -77,7 +77,7 @@
 <div class="col-md-6">
  <div class="form-group">
     <label for="fecha_inicio">Fecha Inicio</label>
-  <input type="date" name="fecha_inicio" id="fecha_inicio" class="form-control" value="<?php  if (isset($data) && $data!="") { echo date('Y-m-d', strtotime($data[0]->fecha_inicio)); } ?>">
+  <input type="date" name="fecha_inicio" id="fecha_inicio" max="<?php echo date("Y-m-d",strtotime(date('Y-m-d')."+ 1 month"));   ?>" min="<?php echo date('Y-m-d')  ?>" class="form-control" value="<?php  if (isset($data) && $data!="") { echo date('Y-m-d', strtotime($data[0]->fecha_inicio)); } ?>"  >
   </div>
 </div>
 
@@ -85,7 +85,7 @@
 
  <div class="form-group">
     <label for="fecha_fin">Fecha Fin</label>
- <input type="date" name="fecha_fin" id="fecha_fin" class="form-control" value="<?php  if (isset($data) && $data!="") { echo date('Y-m-d', strtotime($data[0]->fecha_fin )); } ?>">
+ <input type="date" name="fecha_fin" id="fecha_fin" max="<?php echo date("Y-m-d",strtotime(date('Y-m-d')."+ 1 month"));   ?>" min="<?php echo date('Y-m-d')  ?>"  class="form-control" value="<?php  if (isset($data) && $data!="") { echo date('Y-m-d', strtotime($data[0]->fecha_fin )); } ?>">
   </div>
 </div>
 
