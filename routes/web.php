@@ -97,6 +97,14 @@ Route::put('/jornada/editar/{id?}', 'JornadaController@editarJornadas')->name('e
 Route::delete('/jornada/eliminar/{id?}', 'JornadaController@eliminarJornadas')->name('eliminarJornadas');
 
 ////********************************************************************************************************///
+Route::post('/jornada/add/{id?}', 'JornadaController@addjornadahistorico')->name('addjornadahistorico');
+
+//*******************************************JORNADA SHISTORY***************************************///
+
+
+
+
+////********************************************************************************************************///
 
 Route::get('/beneficios', 'BeneficiosController@list_beneficios')->name('beneficios');
 

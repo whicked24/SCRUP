@@ -25,7 +25,7 @@
                         <div class="form-group col-md-6">
                             <label for="type" class="col-md-4 control-label"> Sector</label>
                             <div class="col-md-8">
-                                <select id="type" class="form-control" name="type" readonly>
+                                <select id="type" class="custom-select custom-select-lg mb-3" name="type" readonly>
                                     <option value="{{$sector[0]->id}}">{{$sector[0]->nombre}}</option>
                                 </select>
                             </div>
@@ -53,7 +53,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="cedula" class="col-md-4 control-label">Cédula</label>
                                     <div class="col-md-2">
-                                        <select name="nacionalidad" id="nacionalidad" class="form-control" required>
+                                        <select name="nacionalidad" id="nacionalidad" class="custom-select custom-select-lg mb-3" required>
                                             <option value="">-</option>
                                             <option value="1">V</option>
                                             <option value="2">E</option>
@@ -84,7 +84,7 @@
                                 <div class="form-group col-md-6">
                                 <label for="sexo" class="col-md-4 control-label">Sexo</label>
                                     <div class="col-md-8">
-                                        <select name="sexo" id="sexo" class="form-control" required>
+                                        <select name="sexo" id="sexo" class="custom-select custom-select-lg mb-3" required>
                                             <option value="">-</option>
                                             <option value="1">Masculino</option>
                                             <option value="2">Femenino</option>
@@ -113,7 +113,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="enfermedad" class="col-md-4 control-label">Enfermedades</label>
                                     <div class="col-md-6">
-                                        <select name="enfermedad" id="enfermedad" class="form-control">
+                                        <select name="enfermedad" id="enfermedad" class="custom-select custom-select-lg mb-3">
                                             <option value="">seleccione</option>
                                             @foreach($enfermedades as $enfermedad)
                                             <option value="{{ $enfermedad->id }}">{{ $enfermedad->descripcion }}</option>
@@ -139,7 +139,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="estado_civil" class="col-md-4 control-label">Estado civil</label>
                                     <div class="col-md-8">
-                                        <select name="estado_civil" id="estado_civil" class="form-control" required>
+                                        <select name="estado_civil" id="estado_civil" class="custom-select custom-select-lg mb-3" required>
                                             <option value="">seleccione</option>
                                             <option value="1">Soltero</option>
                                             <option value="2">Casado</option>
@@ -152,7 +152,7 @@
                                 <div class="form-group col-md-6">                            
                                     <label for="nivel_instruccion" class="col-md-4 control-label">Nivel de instrucción</label>
                                     <div class="col-md-8">
-                                        <select name="nivel_instruccion" id="nivel_instruccion" class="form-control" required>
+                                        <select name="nivel_instruccion" id="nivel_instruccion" class="custom-select custom-select-lg mb-3" required>
                                             <option value="">seleccione</option>
                                             <option value="1">Primaria</option>
                                             <option value="2">Secundaria</option>
@@ -195,7 +195,7 @@
                                     <div class="col-md-12 p-0 hidden" data-name="trabaja">
                                         <label for="ingreso_mensual" class="col-md-4 control-label">Ingreso mensual</label>
                                         <div class="col-md-8">
-                                            <select name="ingreso_mensual" id="ingreso_mensual" class="form-control" >
+                                            <select name="ingreso_mensual" id="ingreso_mensual" class="custom-select custom-select-lg mb-3" >
                                                 <option value="">seleccione</option>
                                                 <option value="1">rango 1</option>
                                                 <option value="2">rango 2</option>
@@ -221,7 +221,7 @@
                                     <div class="col-md-12 p-0 hidden" data-name="estudia">
                                         <label for="tipo_institucion_educativa" class="col-md-4 control-label">Tipo de institución</label>
                                         <div class="col-md-8">
-                                            <select name="tipo_institucion_educativa" id="tipo_institucion_educativa" class="form-control">
+                                            <select name="tipo_institucion_educativa" id="tipo_institucion_educativa" class="custom-select custom-select-lg mb-3">
                                                 <option value="">seleccione</option>
                                                 <option value="1">Publica</option>
                                                 <option value="2">Privada</option>
@@ -253,7 +253,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="tipo_vivienda" class="col-md-4 control-label">Tipo de vivienda</label>
                                     <div class="col-md-8">
-                                        <select name="tipo_vivienda" id="tipo_vivienda" class="form-control">
+                                        <select name="tipo_vivienda" id="tipo_vivienda" class="custom-select custom-select-lg mb-3">
                                             <option value="">-</option>
                                             <option value="1">Casa</option>
                                             <option value="2">Apartamento</option>
@@ -273,7 +273,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="estado_vivienda" class="col-md-4 control-label">Estado de vivienda</label>
                                     <div class="col-md-8">
-                                        <select name="estado_vivienda" id="estado_vivienda" class="form-control">
+                                        <select name="estado_vivienda" id="estado_vivienda" class="custom-select custom-select-lg mb-3">
                                             <option value="">-</option>
                                             <option value="1">Inestable</option>
                                             <option value="2">Alto riesgo</option>
@@ -286,7 +286,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="tenencia_vivienda" class="col-md-4 control-label">Tenencia de casa</label>
                                     <div class="col-md-8">
-                                        <select name="tenencia_vivienda" id="tenencia_vivienda" class="form-control">
+                                        <select name="tenencia_vivienda" id="tenencia_vivienda" class="custom-select custom-select-lg mb-3">
                                             <option value="">-</option>
                                             <option value="1">Propia</option>
                                             <option value="2">Alquilada</option>
@@ -332,7 +332,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="pared" class="col-md-4 control-label">Tipo de paredes</label>
                                     <div class="col-md-6">
-                                        <select name="pared" id="pared" class="form-control" required>
+                                        <select name="pared" id="pared" class="custom-select custom-select-lg mb-3" required>
                                             <option value="">seleccione</option>
                                             <option value="1">Sin frizar</option>
                                             <option value="2">Frizada</option>
@@ -356,7 +356,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="techo" class="col-md-4 control-label">Tipo de techo</label>
                                     <div class="col-md-6">
-                                        <select name="techo" id="techo" class="form-control" required>
+                                        <select name="techo" id="techo" class="custom-select custom-select-lg mb-3" required>
                                             <option value="">seleccione</option>
                                             <option value="1">Zinc</option>
                                             <option value="2">Ladrillo</option>
@@ -431,7 +431,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="animal" class="col-md-4 control-label">Animales</label>
                                     <div class="col-md-4">
-                                        <select name="animal" id="animal" class="form-control">
+                                        <select name="animal" id="animal" class="custom-select custom-select-lg mb-3">
                                             <option value="">seleccione</option>
                                             <option value="1">Perro</option>
                                             <option value="2">Gato</option>
@@ -515,7 +515,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="aguas_blancas" class="col-md-4 control-label">Aguas blancas</label>
                                     <div class="col-md-8">
-                                        <select name="aguas_blancas" id="aguas_blancas" class="form-control">
+                                        <select name="aguas_blancas" id="aguas_blancas" class="custom-select custom-select-lg mb-3">
                                             <option value="">-</option>
                                             <option value="1">Aguaducto</option>
                                             <option value="2">Pila publica</option>
@@ -546,7 +546,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="recoleccion_basura" class="col-md-4 control-label">Recolección de basura</label>
                                     <div class="col-md-8">
-                                        <select name="recoleccion_basura" id="recoleccion_basura" class="form-control">
+                                        <select name="recoleccion_basura" id="recoleccion_basura"class="custom-select custom-select-lg mb-3">
                                             <option value="">-</option>
                                             <option value="1">Container</option>
                                             <option value="2">Bajante</option>
@@ -561,7 +561,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="gas" class="col-md-4 control-label">Gas</label>
                                     <div class="col-md-8">
-                                        <select name="gas" id="gas" class="form-control">
+                                        <select name="gas" id="gas" class="custom-select custom-select-lg mb-3">
                                             <option value="">-</option>
                                             <option value="1">Bombona</option>
                                             <option value="2">Tuberia</option>
@@ -581,7 +581,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="sistema_electrico" class="col-md-4 control-label">Sistema electrico</label>
                                     <div class="col-md-8">
-                                        <select name="sistema_electrico" id="sistema_electrico" class="form-control" required>
+                                        <select name="sistema_electrico" id="sistema_electrico" class="custom-select custom-select-lg mb-3" required>
                                             <option value="">-</option>
                                             <option value="1">Publico</option>
                                             <option value="2">Privado</option>
@@ -608,7 +608,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="transporte" class="col-md-4 control-label">Transporte</label>
                                     <div class="col-md-8">
-                                        <select name="transporte" id="transporte" class="form-control" required>
+                                        <select name="transporte" id="transporte" class="custom-select custom-select-lg mb-3" required>
                                             <option value="">-</option>
                                             <option value="1">Publico</option>
                                             <option value="2">Privado</option>
@@ -717,7 +717,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="parentesco_familiar" class="col-md-4 control-label">Parentesco</label>
                                     <div class="col-md-8">
-                                        <select name="parentesco_familiar" id="parentesco_familiar" class="form-control">
+                                        <select name="parentesco_familiar" id="parentesco_familiar" class="custom-select custom-select-lg mb-3">
                                             <option value="">-</option>
                                             <option value="1">Padre</option>
                                             <option value="2">Madre</option>
@@ -732,7 +732,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="sexo_familiar" class="col-md-4 control-label">Sexo</label>
                                     <div class="col-md-8">
-                                        <select name="sexo_familiar" id="sexo_familiar" class="form-control">
+                                        <select name="sexo_familiar" id="sexo_familiar" class="custom-select custom-select-lg mb-3">
                                             <option value="">-</option>
                                             <option value="1">Masculino</option>
                                             <option value="2">Femenino</option>
@@ -819,7 +819,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="discapacidad_familiar" class="col-md-4 control-label">Discapacidades</label>
                                     <div class="col-md-6">
-                                        <select name="discapacidad_familiar" id="discapacidad_familiar" class="form-control">
+                                        <select name="discapacidad_familiar" id="discapacidad_familiar" class="custom-select custom-select-lg mb-3">
                                             <option value="">seleccione</option>
                                             @foreach($discapacidades as $discapacidad)
                                             <option value="{{ $discapacidad->id }}">{{ $discapacidad->descripcion }}</option>

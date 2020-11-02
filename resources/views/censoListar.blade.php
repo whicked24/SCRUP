@@ -13,6 +13,16 @@
        
             </div>
             <h2>Censos</h2>
+<div class="row justify-content-end">
+    <div class="col-md-2">
+        <form id="nuevo" method="GET" action="{{ route('censoNuevo') }}">
+        <button type="submit" class="btn btn-round btn-primary btn-sm" >Nuevo Censo</button>
+    </form>
+        
+    </div>
+    
+</div>
+<br><br>
             <table id="tablaCensos" class="table table-striped">
                 <thead>
                     <tr>

@@ -27,6 +27,7 @@
 		<th class="text-center">Estatus</th>
 		<th class="text-center">Asunto</th>
 		<th class="text-center">Opciones</th>
+		<th class="text-center"> Registro</th>
 	</thead>
 	<tbody>
 
@@ -66,6 +67,21 @@
 		
 				
 		</td>
+		
+		<td>
+<dir class="row">
+	<form action="{{ route('addjornadahistorico',$jornadas->id) }}" method="POST">
+			{{ csrf_field() }}
+	
+	<div class="col-md-6">
+			<input type="text" name="cedula"  id="cedula" class="form-control" style="display: inline;">
+	</div>
+	<div class="col-md-4">
+			 <button type="submit" class="btn btn-round btn-primary btn-sm" style="display: inline;">Registrar</button>
+	</div>
+</form>
+</dir>
+		</td>
 		</tr>
 		  @endforeach
 	</tbody>
@@ -75,18 +91,8 @@
 
 
 @section("extraScript")
+
 <script src="{{ asset('ajax/jornadasAjax.js') }}"></script>
 
 @endsection
 
-
-<table>
-	<thead>
-		<th class="text-center">#</th>
-		<th class="text-center">Tipo de Jornada</th>
-		<th class="text-center">Creado</th>
-		<th class="text-center">Estatus</th>
-		<th class="text-center">Asunto</th>
-		<th class="text-center">Opciones</th>
-	</thead>
-</table>

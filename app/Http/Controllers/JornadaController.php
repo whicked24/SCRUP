@@ -116,4 +116,30 @@ public function editarJornadas(Request $request,$id){
 }
 
 
+public function addjornadahistorico(Request $request,$id){
+
+  $jornada= App\Jornada::find($id);
+
+  $jornadaHistorico= new App\JornadaHistorico();
+
+$jornadaHistorico->fkidjornada=$jornada->id;
+$jornadaHistorico->cedula=$request->cedula;
+$jornadaHistorico->asunto=$jornada->asunto;
+$jornadaHistorico->descripcion=$jornada->descripcion;
+$jornadaHistorico->fktipo_jornada=$jornada->fktipo_jornada;
+$jornadaHistorico->fktipo_beneficiario=$jornada->fktipo_beneficiario;
+$jornadaHistorico->fecha_inicio=$jornada->fecha_inicio;
+$jornadaHistorico->fecha_fin=$jornada->fecha_fin;
+$jornadaHistorico->fkestatus=$jornada->fkestatus;
+$jornadaHistorico->fkid_sector=$jornada->fkid_sector;
+
+//dd($jornada->id);
+
+$jornadaHistorico->save();
+
+  return back();
+}
+
+
+
 }

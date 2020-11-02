@@ -54,6 +54,10 @@
                             <li>
                                 <a href="{{ url('/') }}">Inicio</a>
                             </li>
+                              <li>
+                                 <a href="{{ route('censoListar') }}">Censo Poblacional</a>
+                            </li>
+                             <!--
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" rolw="button" aria-expanded="false" aria-haspopup="true" v-pre>
                                     Censo Poblacional
@@ -73,6 +77,7 @@
                                     @endif
                                 </ul>
                             </li>
+                            -->
                             <li>
                                 <a href="{{ route('listadoJornadas') }}">Jornadas</a>
                             </li>
@@ -152,8 +157,8 @@
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
 <script src="{{ asset('js/datatables.min.js') }}"></script>
-<script src="{{ asset('js/sweetalert2.js') }}"></script>.js
-<script src="{{ asset('js/validata_data_form.js') }}"></script>.js
+<script src="{{ asset('js/sweetalert2.js') }}"></script>
+<script src="{{ asset('js/validata_data_form.js') }}"></script>
  <script>
        var table = $('#datatable').DataTable({
     language: {
