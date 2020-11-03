@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App;
 use Auth;
 
@@ -119,9 +120,15 @@ public function editarJornadas(Request $request,$id){
 public function addjornadahistorico(Request $request,$id){
 
   $jornada= App\Jornada::find($id);
+  $historico= App\JornadaHistorico::validarbeneficio($request->cedula,$id);
 
-  $jornadaHistorico= new App\JornadaHistorico();
+  if ($historico[0]->cantidad==0) {
+if ($request->cedula=="" || $request->cedula==null) {
 
+return back()->with('validator','Debe ingresar una cédula para continuar');        
+
+}
+$jornadaHistorico= new App\JornadaHistorico();
 $jornadaHistorico->fkidjornada=$jornada->id;
 $jornadaHistorico->cedula=$request->cedula;
 $jornadaHistorico->asunto=$jornada->asunto;
@@ -133,11 +140,21 @@ $jornadaHistorico->fecha_fin=$jornada->fecha_fin;
 $jornadaHistorico->fkestatus=$jornada->fkestatus;
 $jornadaHistorico->fkid_sector=$jornada->fkid_sector;
 
-//dd($jornada->id);
-
 $jornadaHistorico->save();
 
-  return back();
+
+return back()->with('msg', 'La persona ha sido registrada Exitosamente');
+  }else{
+
+return back()->with('error', 'Esta persona ya ha sido registrada para este beneficio.');
+
+  }
+
+
+
+
+
+  
 }
 
 

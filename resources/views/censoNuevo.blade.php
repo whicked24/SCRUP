@@ -892,22 +892,7 @@
 
 <script type="text/javascript">
 
-//$('#siguiente').click(function(e) {
-//    e.preventDefault();
-//    alert('Rellene los campos');
-//  if ($('#formCenso').smkValidate()) {
-    // Code here
-//    $.smkAlert({
-//      text: 'valida Datos!',
-//      type: 'success',
-//          });
-  //}else{
-    //alert("fallo");
-  //}
-//}
 
-
-}),
 
 $('#cedula').click(function(e) {
     e.preventDefault();
@@ -924,7 +909,7 @@ $('#cedula').click(function(e) {
   }
 
 
-}),
+})
 
 
 
