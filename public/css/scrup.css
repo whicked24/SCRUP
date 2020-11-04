@@ -1,0 +1,35 @@
+.navbar {
+	background-color: #F00;
+}
+
+.navbar .dropdown-menu a,
+.navbar a {
+	color: #FFF !important;
+}
+
+.navbar-nav>.open>a {
+	background-color: #FF6D6D !important;
+}
+
+.navbar-nav>li>.dropdown-menu {
+	background-color: #F00 !important;
+}
+
+.navbar-nav>li>.dropdown-menu a:hover,
+.navbar-nav>li a:hover{
+	background-color: #FF6D6D !important;
+}
+
+#tablaUsuarios th {
+	text-align: center;
+}
+
+.pointer {
+    cursor: pointer !important;
+}
+
+
+
+
+
+

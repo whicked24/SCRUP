@@ -1,0 +1,18 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use app\censoController;
+use DB;
+use Illuminate\Support\Facades\Log;
+use Validator;
+
+class censoController extends Controller
+{
+    
+
+    public function censo()
+    {
+        return view('censo.blade.php');
+    }
