@@ -1,5 +1,7 @@
 <?php
-
+if(version_compare(PHP_VERSION, '7.2.0', '>=')) {
+    error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
+}
 use Illuminate\Http\Request;
 
 /*
@@ -105,8 +107,30 @@ Route::post('/jornada/add/{id?}', 'JornadaController@addjornadahistorico')->name
 Route::get('/reporte/pdf', 'Htmlpdf@reporteJornadas')->name('reporteJornadas');
 
 
-////********************************************************************************************************///
+//*************************************************************************************************//
 
+Route::get('/adminitracion/animales', 'DataMaestraController@listarAnimales')->name('listarAnimales');
+Route::get('/adminitracion/animales/nuevo/{tipo?}', 'DataMaestraController@formAnimales')->name('formAnimales');
+Route::post('/adminitracion/animales', 'DataMaestraController@agregarAnimales')->name('agregarAnimales');
+//*************************************************************************************************//
+//*************************************************************************************************//
+
+Route::get('/adminitracion/plagas', 'DataMaestraController@listarPlagas')->name('listarPlagas');
+Route::get('/adminitracion/plagas/nuevo/{tipo?}', 'DataMaestraController@formPlagas')->name('formPlagas');
+Route::post('/adminitracion/plagas', 'DataMaestraController@agregarPlagas')->name('agregarPlagas');
+//*************************************************************************************************//
+//*************************************************************************************************//
+
+Route::get('/adminitracion/enfermedades', 'DataMaestraController@listarEnfermedades')->name('listarEnfermedades');
+Route::get('/adminitracion/enfermedades/nuevo/{tipo?}', 'DataMaestraController@formEnfermedades')->name('formEnfermedades');
+Route::post('/adminitracion/enfermedades', 'DataMaestraController@agregarEnfermedades')->name('agregarEnfermedades');
+//*************************************************************************************************//
+
+Route::get('/adminitracion/jornadas', 'Tipo_jornadaController@listarTipo')->name('listarTipo');
+Route::get('/adminitracion/jornadas/nuevo', 'Tipo_jornadaController@formTipo')->name('formTipo');
+Route::post('/adminitracion/jornadas', 'Tipo_jornadaController@agregarTipo')->name('agregarTipo');
+//*************************************************************************************************//
+//*************************************************************************************************//
 Route::get('/beneficios', 'BeneficiosController@list_beneficios')->name('beneficios');
 
 Route::get('/imprimir', 'Generador@imprimir')->name('print');

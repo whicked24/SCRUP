@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App;
 use Auth;
+use DB;
 
 class JornadaController extends Controller
 {
@@ -19,10 +20,10 @@ class JornadaController extends Controller
 
    public function formJornada($id=null){
  		
-        $estatus=App\Estatu::find(['3','4','5','6']);
+        $estatus=App\Estatu::find(['4','5','6']);
         $tipo_beneficiario=App\Tipo_beneficiario::all();
         $tipoJornada=App\Tipo_jornada::all();
-         $data="";
+        $data="";
       	
 	return view('jornadas.formJornadas',compact('estatus','tipoJornada','tipo_beneficiario','data'));
 
@@ -40,7 +41,7 @@ class JornadaController extends Controller
     'jornada' => ['required', 'integer'],
     'beneficiario' => ['required', 'integer'],
     'fecha_inicio' => ['required', 'string'],
-    'estatus' => ['required', 'integer'],
+   
 ]);
    	$nuevaJornada->asunto=$request->asunto;
    	$nuevaJornada->descripcion=$request->descripcion;
@@ -49,7 +50,7 @@ class JornadaController extends Controller
    	$nuevaJornada->fecha_inicio=$request->fecha_inicio;
    	$nuevaJornada->fecha_fin=$request->fecha_fin;
   	$nuevaJornada->tiempo_estimado=$request->tiempo;
-  	$nuevaJornada->fkestatus=$request->estatus;
+  	$nuevaJornada->fkestatus=3;
   	$nuevaJornada->fkid_sector=$id_sector;
 
     $nuevaJornada->save();
@@ -91,7 +92,13 @@ class JornadaController extends Controller
 public function editarJornadasform($id){
 
 $data =  App\Jornada::buscar_id($id);
-$estatus=App\Estatu::find(['3','4','5','6']);
+if ($data[0]->fkestatus==4) {
+  $estatus=App\Estatu::find(['5','6']);
+}else{
+  $estatus=App\Estatu::find(['4','5','6']);
+}
+
+
 $tipo_beneficiario=App\Tipo_beneficiario::all();
 $tipoJornada=App\Tipo_jornada::all();   
 
@@ -100,14 +107,15 @@ $tipoJornada=App\Tipo_jornada::all();
 
 
 public function editarJornadas(Request $request,$id){
+
     $nuevaJornada =  App\Jornada::find($id);
     $nuevaJornada->id=$id;
-    $nuevaJornada->asunto=$request->asunto;
-    $nuevaJornada->descripcion=$request->descripcion;
-    $nuevaJornada->fktipo_jornada=$request->jornada;
-    $nuevaJornada->fktipo_beneficiario=$request->beneficiario;
-    $nuevaJornada->fecha_inicio=$request->fecha_inicio;
-    $nuevaJornada->fecha_fin=$request->fecha_fin;
+    //$nuevaJornada->asunto=$request->asunto;
+    //$nuevaJornada->descripcion=$request->descripcion;
+    //$nuevaJornada->fktipo_jornada=$request->jornada;
+    //$nuevaJornada->fktipo_beneficiario=$request->beneficiario;
+    //$nuevaJornada->fecha_inicio=$request->fecha_inicio;
+    //$nuevaJornada->fecha_fin=$request->fecha_fin;
     $nuevaJornada->tiempo_estimado=$request->tiempo;
     $nuevaJornada->fkestatus=$request->estatus;
   
@@ -121,8 +129,13 @@ public function addjornadahistorico(Request $request,$id){
 
   $jornada= App\Jornada::find($id);
   $historico= App\JornadaHistorico::validarbeneficio($request->cedula,$id);
+   $personas = DB::select('SELECT COUNT(*) as cantidad FROM personas WHERE cedula=?',[$request->cedula]);
 
-  if ($historico[0]->cantidad==0) {
+
+if ($personas[0]->cantidad>0) {
+  
+  if ($historico[0]->cantidad==0) { 
+
 if ($request->cedula=="" || $request->cedula==null) {
 
 return back()->with('validator','Debe ingresar una cédula para continuar');        
@@ -150,7 +163,9 @@ return back()->with('error', 'Esta persona ya ha sido registrada para este benef
 
   }
 
-
+}else{
+  return back()->with('error', 'Esta persona no se encuentra registrada como beneficio.');
+}
 
 
 

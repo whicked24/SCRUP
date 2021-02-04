@@ -57,27 +57,7 @@
                               <li>
                                  <a href="{{ route('censoListar') }}">Censo Poblacional</a>
                             </li>
-                             <!--
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" rolw="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                                    Censo Poblacional
-                                </a>
-
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="{{ route('censoNuevo') }}">Nuevo</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('censoListar') }}">Consulta</a>
-                                    </li>
-                                    @if (Auth::user()->type == 1)                
-                                    <li>
-                                        <a href="{{ route('sectoresListar') }}">Sectores</a>
-                                    </li>
-                                    @endif
-                                </ul>
-                            </li>
-                            -->
+                
                             <li>
                                 <a href="{{ route('listadoJornadas') }}">Jornadas</a>
                             </li>
@@ -103,11 +83,7 @@
 
                                         </ul>
                             </li>
-                            @if (Auth::user()->type == 1)                
-                            <li>
-                                <a href="{{ route('usuariosListar') }}">Usuarios</a>
-                            </li>
-                            @endif
+                       
                             <li>
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" rolw="button" aria-expanded="false" aria-haspopup="true" v-pre>
                                     Estadísticas
@@ -122,9 +98,35 @@
                                     </li>
                                 </ul>
                             </li>
+                                <li>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" rolw="button" aria-expanded="false" aria-haspopup="true" v-pre>
+                                   Administración
+                                </a>
+
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="{{ route('listarAnimales') }}">Animales</a>
+                                    </li>
+                                       <li>
+                                        <a href="{{ route('listarEnfermedades') }}">Enfermedades</a>
+                                    </li> 
+                                    <li>
+                                        <a href="{{ route('listarPlagas') }}">Plagas</a>
+                                    </li>
+                                    @if (Auth::user()->type == 1)                
+                                    <li>
+                                        <a href="{{ route('usuariosListar') }}">Usuarios</a>
+                                    </li>
+                                    @endif
+                                      <li>
+                                        <a href="{{ route('listarTipo') }}">Tipo Jornadas</a>
+                                    </li>
+                                </ul>
+                            </li>
+
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                                    {{ Auth::user()->name }}
+                                    Usuario
                                 </a>
 
                                 <ul class="dropdown-menu">
@@ -132,7 +134,7 @@
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                           {{ Auth::user()->name }} Salir
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -150,7 +152,7 @@
         @yield('content')
     </div>
 
-    <!-- Scripts -->
+<!-- Scripts 
 <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap-select.js') }}"></script>
@@ -158,32 +160,19 @@
 <script src="{{ asset('js/main.js') }}"></script>
 <script src="{{ asset('js/datatables.min.js') }}"></script>
 <script src="{{ asset('js/sweetalert2.js') }}"></script>
+<script src="{{ asset('js/fontawesome/all.min.js') }}"></script>
 <script src="{{ asset('js/validata_data_form.js') }}"></script>
- <script>
-       var table = $('#datatable').DataTable({
-    language: {
-        "decimal": "",
-        "emptyTable": "No hay información",
-        "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-        "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
-        "infoFiltered": "(Filtrado de _MAX_ total entradas)",
-        "infoPostFix": "",
-        "thousands": ",",
-        "lengthMenu": "Mostrar _MENU_ Entradas",
-        "loadingRecords": "Cargando...",
-        "processing": "Procesando...",
-        "search": "Buscar:",
-        "zeroRecords": "Sin resultados encontrados",
-        "paginate": {
-            "first": "Primero",
-            "last": "Ultimo",
-            "next": "Siguiente",
-            "previous": "Anterior"
-        }
-    },
+-->
+    <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
    
-});
-    </script>
+    <script src="{{ asset('js/bootstrap/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap/popper.min.js') }}"></script>
+    <script src="{{ asset('js/fontawesome/all.min.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/validata_data_form.js') }}"></script>
+
     @yield('extraScript')
 </body>
 </html>
