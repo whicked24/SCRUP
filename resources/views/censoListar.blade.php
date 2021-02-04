@@ -63,9 +63,15 @@
     <script>
         var token = $("meta[name='csrf-token']").attr("content");
     </script>
+<<<<<<< HEAD
     <script src="{{ asset('js/datatables.min.js') }}"></script>
      <script>
        var table = $('#datatable').DataTable({
+=======
+ <script src="{{ asset('js/datatables.min.js') }}"></script>
+     <script>
+       var table = $('#tablaCensos').DataTable({
+>>>>>>> 0f7a488e1084cde4ae46d7288d8152323ce7384f
     language: {
         "decimal": "",
         "emptyTable": "No hay información",

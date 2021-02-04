@@ -9,6 +9,7 @@ use DB;
 use Auth;
 use App\Charts\globalChart;
 
+
 class CensoController extends Controller
 {
     public function listar()
@@ -21,9 +22,16 @@ class CensoController extends Controller
     {
         $enfermedades = DB::select('SELECT id, descripcion FROM enfermedad');
         $discapacidades = DB::select('SELECT id, descripcion FROM discapacidad');
+
+        $genero= DB::select('SELECT id, nombre FROM data_maestra WHERE tipo=?',['genero']);
+        $estado_civil= DB::select('SELECT id, nombre FROM data_maestra WHERE tipo=?',['estado_civil']);
+        $nivel_instruccion= DB::select('SELECT id, nombre FROM data_maestra WHERE tipo=?',['nivel_intruccion']);
+        $nacionalidad= DB::select('SELECT id, nombre FROM data_maestra WHERE tipo=?',['nacionalidad']);
+        $animales= DB::select('SELECT id, nombre FROM data_maestra WHERE tipo=?',['animales']);
+        $plagas= DB::select('SELECT id, nombre FROM data_maestra WHERE tipo=?',['plaga']);
         $id_sector = Auth::user()->id_sector;
         $sector = DB::select('SELECT id_sector AS id, sector AS nombre FROM sectores WHERE id_sector=?',[$id_sector]);
-        return view('censoNuevo', compact('enfermedades', 'discapacidades', 'sector'));
+        return view('censoNuevo', compact('enfermedades', 'discapacidades', 'sector','genero','estado_civil','nivel_instruccion','nacionalidad','animales','plagas'));
     }
 
     public function editar($id)

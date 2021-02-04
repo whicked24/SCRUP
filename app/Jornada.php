@@ -19,7 +19,8 @@ class Jornada extends Model
 					->join('estatus', 'jornadas.fkestatus', '=', 'estatus.id')
 					->join('tipo_jornadas', 'jornadas.fktipo_jornada', '=', 'tipo_jornadas.id')
 					->join('tipo_beneficiarios', 'jornadas.fktipo_beneficiario', '=', 'tipo_beneficiarios.id')
-					->where('fkid_sector','=',$id_sector)
+					->where('jornadas.fkestatus','!=',5)
+                    ->where('fkid_sector','=',$id_sector)
 					->select('jornadas.*', 'estatus.descripcion as estatus', 'tipo_jornadas.descripcion as jornadas','tipo_beneficiarios.descripcion as beneficiario')
 					->get();
 

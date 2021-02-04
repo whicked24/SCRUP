@@ -23,11 +23,17 @@
 
 <div class="card text-center">
   <div class="card-header">
-  	<h4 class="tittle"> Registro de Jornadas</h4>
+
+  	<h4 class="tittle">	<?php if (isset($data) && $data=="") { echo " Registro de Jornadas"; }else{ echo  " Modificación de la Jornada ".$data[0]->jornadas." dirijido a ".$data[0]->beneficiario. " ( ".$data[0]->estatus." )" ; } ?></h4>
   
   </div>
+
   <div class="card-body">
     
+
+
+<?php if (isset($data) && $data=="") {  ?>
+
 		<div class="row justify-content-lg-center">
 			<div class="col-md-6">
 				  <div class="form-group">
@@ -54,11 +60,12 @@
 			</div>
 		</div>
 
+
 					<div class="row justify-content-lg-center">
 <div class="col-md-6">
   <div class="form-group">
     <label for="asunto">Asunto</label>
-   <input type="text" id="asunto"  onKeyPress='return validarLETRA(event)' name="asunto" class="form-control" maxlength="100" value="<?php if (isset($data) && $data!="") { echo $data[0]->asunto; }?>"onKeyUp="this.value=this.value.toUpperCase();" >
+   <input type="text" id="asunto"  onKeyPress='return validarLETRA(event)' name="asunto" class="form-control" maxlength="100" value="<?php if (isset($data) && $data!="") { echo $data[0]->asunto; }?>" onKeyUp="this.value=this.value.toUpperCase();" >
   </div>
 </div>
 
@@ -90,16 +97,20 @@
 </div>
 
 	</div>
+<?php  } ?>
+
+
+
 
 
 <div class="row justify-content-lg-center">
 			<div class="col-md-6">
 			       <div class="form-group">
 			    <label for="tiempo">Tiempo</label>
-			 <input type="time" name="tiempo" id="tiempo" class="form-control" >
+			 <input type="number" name="tiempo" id="tiempo" class="form-control" value="<?php if (isset($data) && $data!="") { echo $data[0]->tiempo_estimado; }?>" >
 			  </div>
 			</div>
-
+<?php if (isset($data) && $data!="") {?>
 			<div class="col-md-6">
 			      <div class="form-group">
 			    		<label for="estatus">Estatus</label>
@@ -111,6 +122,7 @@
 						</select>
 			  		</div>
 				</div>
+<?php } ?>
 	</div>
 
 				<div class="row justify-contet-lg-center">

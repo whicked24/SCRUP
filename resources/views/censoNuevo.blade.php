@@ -86,8 +86,15 @@
                                     <div class="col-md-8">
                                         <select name="sexo" id="sexo" class="custom-select custom-select-lg mb-3" required>
                                             <option value="">-</option>
-                                            <option value="1">Masculino</option>
-                                            <option value="2">Femenino</option>
+
+                                           
+                                            <?php $contador_genero=0; ?>
+                                            @foreach($genero as $generos)
+                                            <?php $contador_genero++; ?>
+                                            <option value="{{ $contador_genero }}">{{ $generos->nombre }}</option>
+                                           
+                                            @endforeach
+                                       
                                         </select>
                                     </div>
                                 </div>
@@ -141,10 +148,12 @@
                                     <div class="col-md-8">
                                         <select name="estado_civil" id="estado_civil" class="custom-select custom-select-lg mb-3" required>
                                             <option value="">seleccione</option>
-                                            <option value="1">Soltero</option>
-                                            <option value="2">Casado</option>
-                                            <option value="3">Divorciado</option>
-                                            <option value="4">Viudo</option>
+                                            <?php $contador_civil=0; ?>
+                                            @foreach($estado_civil as $estado_civils)
+                                            <?php $contador_civil++; ?>
+                                            <option value="{{ $contador_civil }}">{{ $estado_civils->nombre }}</option>
+                                           
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -154,11 +163,12 @@
                                     <div class="col-md-8">
                                         <select name="nivel_instruccion" id="nivel_instruccion" class="custom-select custom-select-lg mb-3" required>
                                             <option value="">seleccione</option>
-                                            <option value="1">Primaria</option>
-                                            <option value="2">Secundaria</option>
-                                            <option value="3">Bachiller</option>
-                                            <option value="4">Universitaria</option>
-                                            <option value="5">NINGUNA</option>
+                                            <?php $contador_instruccion=0; ?>
+                                            @foreach($nivel_instruccion as $nivel_instruccions)
+                                            <?php $contador_instruccion++; ?>
+                                            <option value="{{ $contador_instruccion }}">{{ $nivel_instruccions->nombre }}</option>
+                                           
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -332,7 +342,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="pared" class="col-md-4 control-label">Tipo de paredes</label>
                                     <div class="col-md-6">
-                                        <select name="pared" id="pared" class="custom-select custom-select-lg mb-3" required>
+                                        <select name="pared" id="pared" class="custom-select custom-select-lg mb-3">
                                             <option value="">seleccione</option>
                                             <option value="1">Sin frizar</option>
                                             <option value="2">Frizada</option>
@@ -356,7 +366,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="techo" class="col-md-4 control-label">Tipo de techo</label>
                                     <div class="col-md-6">
-                                        <select name="techo" id="techo" class="custom-select custom-select-lg mb-3" required>
+                                        <select name="techo" id="techo" class="custom-select custom-select-lg mb-3">
                                             <option value="">seleccione</option>
                                             <option value="1">Zinc</option>
                                             <option value="2">Ladrillo</option>
@@ -536,7 +546,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="aguas_servidas" class="col-md-4 control-label">Aguas servidas</label>
                                     <div class="col-md-8">
-                                        <select name="aguas_servidas" id="aguas_servidas" class="form-control">
+                                        <select name="aguas_servidas" id="aguas_servidas" class="custom-select custom-select-lg mb-3">
                                             <option value="">-</option>
                                             <option value="1">Tuberia</option>
                                         </select>
@@ -561,7 +571,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="gas" class="col-md-4 control-label">Gas</label>
                                     <div class="col-md-8">
-                                        <select name="gas" id="gas" class="custom-select custom-select-lg mb-3">
+                                        <select name="gas" id="gas" class="custom-select custom-select-lg mb-3" onchange="mostrar_bombonas(this.value);">
                                             <option value="">-</option>
                                             <option value="1">Bombona</option>
                                             <option value="2">Tuberia</option>
@@ -569,7 +579,7 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-6" id="info_bombonas">
                                     <label for="bombonas_gas" class="col-md-4 control-label">Bombonas</label>
                                     <div class="col-md-8">
                                         <input id="bombona_gas" type="number" class="form-control" name="bombona_gas" value="0"/>
@@ -674,6 +684,47 @@
                             
                             <h3 class="text-center">Carga familiar</h3>
 
+
+                           <div class="col-md-12 m-0 p-0">
+                                  <div class="form-group col-md-6">
+                                    <label for="nombre_familiar" class="col-md-4 control-label">Posee Cédula</label>
+                                    <div class="col-md-8">
+                                       <select id="posee_cedula" name="posee_cedula" class="custom-select custom-select-lg mb-3" onchange="mostrar_cedula_familiar(this.value);">
+                                           <option value="">-</option>
+                                           <option value="1">SI</option>
+                                           <option value="2">NO</option>
+                                       </select>
+                                    </div>
+                                </div>
+
+                           </div> 
+
+                                 <div class="col-md-12 m-0 p-0">
+
+                                <div class="form-group col-md-6" id="info_cedula_familiar">
+                                    <label for="cedula_familiar" class="col-md-4 control-label">Cédula</label>
+                                    <div class="col-md-2">
+                                        <select name="nacionalidad_familiar" id="nacionalidad_familiar" class="custom-select custom-select-lg mb-3">
+                                            <option value="">-</option>
+                                            <option value="1">V</option>
+                                            <option value="2">E</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input id="cedula_familiar" type="text" class="form-control" name="cedula_familiar"/>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group col-md-6">
+                                    <label for="fecha_nacimiento_familiar" class="col-md-4 control-label">Fecha de nacimiento</label>
+                                    <div class="col-md-8">
+                                        <input id="fecha_nacimiento_familiar" type="date" class="form-control" name="fecha_nacimiento_familiar"/>
+                                    </div>
+                                </div>
+                            </div> 
+
                             <div class="col-md-12 m-0 p-0">
                                 <div class="form-group col-md-6">
                                     <label for="nombre_familiar" class="col-md-4 control-label">Nombres</label>
@@ -690,28 +741,15 @@
                                 </div>
                             </div> 
 
-                            <div class="col-md-12 m-0 p-0">
-                                <div class="form-group col-md-6">
-                                    <label for="cedula_familiar" class="col-md-4 control-label">Cédula</label>
-                                    <div class="col-md-2">
-                                        <select name="nacionalidad_familiar" id="nacionalidad_familiar" class="form-control" required>
-                                            <option value="">-</option>
-                                            <option value="1">V</option>
-                                            <option value="2">E</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input id="cedula_familiar" type="text" class="form-control" name="cedula_familiar"/>
-                                    </div>
-                                </div>
 
-                                <div class="form-group col-md-6">
-                                    <label for="fecha_nacimiento_familiar" class="col-md-4 control-label">Fecha de nacimiento</label>
-                                    <div class="col-md-8">
-                                        <input id="fecha_nacimiento_familiar" type="date" class="form-control" name="fecha_nacimiento_familiar"/>
-                                    </div>
-                                </div>
-                            </div> 
+
+
+
+                      
+
+
+
+
 
                             <div class="col-md-12 m-0 p-0">
                                 <div class="form-group col-md-6">
@@ -770,7 +808,7 @@
                                 <div class="form-group col-md-6">                                
                                     <label for="cedula_familiar_enfermedad" class="col-md-4 control-label">Familiar</label>
                                     <div class="col-md-8">
-                                        <select name="cedula_familiar_enfermedad" id="cedula_familiar_enfermedad" class="form-control" required>
+                                        <select name="cedula_familiar_enfermedad" id="cedula_familiar_enfermedad" class="custom-select custom-select-lg mb-3" >
                                             <option value="">Seleccione</option>
 
                                         </select>
@@ -780,7 +818,7 @@
                                 <div class="form-group col-md-6">                                
                                     <label for="enfermedad_familiar" class="col-md-4 control-label">Enfermedades</label>
                                     <div class="col-md-6">
-                                        <select name="enfermedad_familiar" id="enfermedad_familiar" class="form-control">
+                                        <select name="enfermedad_familiar" id="enfermedad_familiar" class="custom-select custom-select-lg mb-3">
                                             <option value="">seleccione</option>
                                             @foreach($enfermedades as $enfermedad)
                                             <option value="{{ $enfermedad->id }}">{{ $enfermedad->descripcion }}</option>
@@ -810,7 +848,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="cedula_familiar_discapacidad" class="col-md-4 control-label">Familiar</label>
                                     <div class="col-md-8">
-                                        <select name="cedula_familiar_discapacidad" id="cedula_familiar_discapacidad" class="form-control">
+                                        <select name="cedula_familiar_discapacidad" id="cedula_familiar_discapacidad" class="custom-select custom-select-lg mb-3">
                                             <option value="">Seleccione</option>
                                         </select>
                                     </div>
@@ -892,12 +930,19 @@
 
 <script type="text/javascript">
 
+<<<<<<< HEAD
+=======
+$(document).ready(function(){
+$('#info_bombonas').hide();
+$('#info_cedula_familiar').hide();
+});
+>>>>>>> 0f7a488e1084cde4ae46d7288d8152323ce7384f
 
 $('#cedula').click(function(e) {
     e.preventDefault();
-    //alert('Ingrese N°CI Minimo 6 Digitos');
+  
   if ($('#cedula').smkValidate()) {
-    // Code here
+  
     $.smkAlert({
       text: 'Listo!',
       type: 'success',
@@ -909,6 +954,10 @@ $('#cedula').click(function(e) {
 
 
 })
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0f7a488e1084cde4ae46d7288d8152323ce7384f
 
 
 $('#nombre').click(function(e) {
@@ -928,7 +977,6 @@ $('#nombre').click(function(e) {
 
 });
 
-
 $('#apellido').click(function(e) {
     e.preventDefault();
     //alert('Ingrese apellido');
@@ -943,14 +991,39 @@ $('#apellido').click(function(e) {
     //alert("fallo");
   }
 
-
-
-
-
 })
 
 
+});
 
+function mostrar_bombonas(valor){
+
+if (valor==1) {
+$('#info_bombonas').show();
+
+}else{
+$('#info_bombonas').hide();
+}
+
+
+<<<<<<< HEAD
+=======
+}
+
+
+function mostrar_cedula_familiar(valor){
+
+
+if (valor==1) {
+$('#info_cedula_familiar').show();
+
+}else{
+$('#info_cedula_familiar').hide();
+}
+
+
+}
+>>>>>>> 0f7a488e1084cde4ae46d7288d8152323ce7384f
 </script>
 
 @endsection

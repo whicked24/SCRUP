@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "678ed57293a88e2e6f30592564d4c4bb",
+    "content-hash": "0645a893e9ec3cd62ded2a0ee5122052",
     "packages": [
         {
             "name": "balping/json-raw-encoder",
@@ -51,21 +51,21 @@
         },
         {
             "name": "barryvdh/laravel-dompdf",
-            "version": "v0.8.5",
+            "version": "v0.8.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-dompdf.git",
-                "reference": "7393732b2f3a3ee357974cbb0c46c9b65b84dad1"
+                "reference": "30310e0a675462bf2aa9d448c8dcbf57fbcc517d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-dompdf/zipball/7393732b2f3a3ee357974cbb0c46c9b65b84dad1",
-                "reference": "7393732b2f3a3ee357974cbb0c46c9b65b84dad1",
+                "url": "https://api.github.com/repos/barryvdh/laravel-dompdf/zipball/30310e0a675462bf2aa9d448c8dcbf57fbcc517d",
+                "reference": "30310e0a675462bf2aa9d448c8dcbf57fbcc517d",
                 "shasum": ""
             },
             "require": {
                 "dompdf/dompdf": "^0.8",
-                "illuminate/support": "^5.5|^6",
+                "illuminate/support": "^5.5|^6|^7|^8",
                 "php": ">=7"
             },
             "type": "library",
@@ -103,7 +103,13 @@
                 "laravel",
                 "pdf"
             ],
-            "time": "2019-08-23T14:30:33+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/barryvdh",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-09-07T11:50:18+00:00"
         },
         {
             "name": "consoletvs/charts",
@@ -578,6 +584,7 @@
                     "email": "jakub.onderka@gmail.com"
                 }
             ],
+            "abandoned": "php-parallel-lint/php-console-color",
             "time": "2018-09-29T17:23:10+00:00"
         },
         {
@@ -624,6 +631,7 @@
                 }
             ],
             "description": "Highlight PHP code in terminal",
+            "abandoned": "php-parallel-lint/php-console-highlighter",
             "time": "2018-09-29T18:48:56+00:00"
         },
         {
@@ -1072,6 +1080,7 @@
                 "cron",
                 "schedule"
             ],
+            "abandoned": "dragonmantank/cron-expression",
             "time": "2017-01-23T04:29:33+00:00"
         },
         {
@@ -4607,5 +4616,6 @@
     "platform": {
         "php": ">=7.0.0"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }
