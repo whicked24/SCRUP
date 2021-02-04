@@ -24,7 +24,6 @@
             <div class="container">
                 <div class="navbar-header">
 
-                    <!-- Collapsed Hamburger -->
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
                         <span class="sr-only">Toggle Navigation</span>
                         <span class="icon-bar"></span>
@@ -32,24 +31,22 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
+            
                     <ul class="nav navbar-nav">
                         &nbsp;
                     </ul>
 
-                    <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
+                   
                         @guest
                             <li><a href="{{ route('login') }}">Login</a></li>
-                            <!--li><a href="{{ route('register') }}">Register</a></li-->
+      
                         @else
                             <li>
                                 <a href="{{ url('/') }}">Inicio</a>
@@ -57,27 +54,7 @@
                               <li>
                                  <a href="{{ route('censoListar') }}">Censo Poblacional</a>
                             </li>
-                             <!--
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" rolw="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                                    Censo Poblacional
-                                </a>
 
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="{{ route('censoNuevo') }}">Nuevo</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('censoListar') }}">Consulta</a>
-                                    </li>
-                                    @if (Auth::user()->type == 1)                
-                                    <li>
-                                        <a href="{{ route('sectoresListar') }}">Sectores</a>
-                                    </li>
-                                    @endif
-                                </ul>
-                            </li>
-                            -->
                             <li>
                                 <a href="{{ route('listadoJornadas') }}">Jornadas</a>
                             </li>
@@ -90,9 +67,7 @@
                                     <li>
                                         <a href="{{ asset('pdf/Carta_residencia.pdf') }}" target="_blank">Carta de residencia</a>
                                     </li>
-                                    <!--li>
-                                        <a href="{{ asset('pdf/Carta_buena_conducta.pdf') }}" target="_blank">Cuadernillo</a>
-                                    </li-->
+                           
                                     <li>
                                         <a href="{{ asset('pdf/postulacion.pdf') }}" target="_blank">Carta de postulación de candidato</a>
                                     </li>
@@ -151,39 +126,21 @@
     </div>
 
     <!-- Scripts -->
+
+
 <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+
 <script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap-select.js') }}"></script>
-<script src="{{ asset('js/app.js') }}"></script>
-<script src="{{ asset('js/main.js') }}"></script>
-<script src="{{ asset('js/datatables.min.js') }}"></script>
+
 <script src="{{ asset('js/sweetalert2.js') }}"></script>
+<script src="{{ asset('js/fontawesome/all.min.js') }}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/validata_data_form.js') }}"></script>
- <script>
-       var table = $('#datatable').DataTable({
-    language: {
-        "decimal": "",
-        "emptyTable": "No hay información",
-        "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-        "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
-        "infoFiltered": "(Filtrado de _MAX_ total entradas)",
-        "infoPostFix": "",
-        "thousands": ",",
-        "lengthMenu": "Mostrar _MENU_ Entradas",
-        "loadingRecords": "Cargando...",
-        "processing": "Procesando...",
-        "search": "Buscar:",
-        "zeroRecords": "Sin resultados encontrados",
-        "paginate": {
-            "first": "Primero",
-            "last": "Ultimo",
-            "next": "Siguiente",
-            "previous": "Anterior"
-        }
-    },
-   
-});
-    </script>
+<script src="{{ asset('js/main.js') }}"></script>
+
+
+
     @yield('extraScript')
 </body>
 </html>
