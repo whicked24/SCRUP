@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
@@ -54,11 +55,7 @@
                               <li>
                                  <a href="{{ route('censoListar') }}">Censo Poblacional</a>
                             </li>
-<<<<<<< HEAD
 
-=======
-                
->>>>>>> 0f7a488e1084cde4ae46d7288d8152323ce7384f
                             <li>
                                 <a href="{{ route('listadoJornadas') }}">Jornadas</a>
                             </li>
@@ -103,7 +100,8 @@
                                 </a>
 
                                 <ul class="dropdown-menu">
-                                    <li>
+
+                                  <li>
                                         <a href="{{ route('listarAnimales') }}">Animales</a>
                                     </li>
                                        <li>
@@ -112,6 +110,8 @@
                                     <li>
                                         <a href="{{ route('listarPlagas') }}">Plagas</a>
                                     </li>
+                                 
+                                    
                                     @if (Auth::user()->type == 1)                
                                     <li>
                                         <a href="{{ route('usuariosListar') }}">Usuarios</a>
@@ -119,6 +119,9 @@
                                     @endif
                                       <li>
                                         <a href="{{ route('listarTipo') }}">Tipo Jornadas</a>
+                                    </li>
+                                                     <li>
+                                        <a href="{{ route('sectoresListar') }}">Sectores</a>
                                     </li>
                                 </ul>
                             </li>
@@ -151,29 +154,8 @@
         @yield('content')
     </div>
 
-<<<<<<< HEAD
-    <!-- Scripts -->
 
 
-=======
-<!-- Scripts 
->>>>>>> 0f7a488e1084cde4ae46d7288d8152323ce7384f
-<script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
-
-<script src="{{ asset('js/bootstrap/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('js/bootstrap-select.js') }}"></script>
-
-<script src="{{ asset('js/sweetalert2.js') }}"></script>
-<script src="{{ asset('js/fontawesome/all.min.js') }}"></script>
-<<<<<<< HEAD
-<script src="{{ asset('js/app.js') }}"></script>
-<script src="{{ asset('js/validata_data_form.js') }}"></script>
-<script src="{{ asset('js/main.js') }}"></script>
-
-
-=======
-<script src="{{ asset('js/validata_data_form.js') }}"></script>
--->
     <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
    
     <script src="{{ asset('js/bootstrap/bootstrap.min.js') }}"></script>
@@ -183,7 +165,7 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ asset('js/validata_data_form.js') }}"></script>
->>>>>>> 0f7a488e1084cde4ae46d7288d8152323ce7384f
+
 
     @yield('extraScript')
 </body>

@@ -20,7 +20,7 @@ class CensoController extends Controller
 
     public function nuevo()
     {
-        $enfermedades = DB::select('SELECT id, descripcion FROM enfermedad');
+       // $enfermedades = DB::select('SELECT id, descripcion FROM enfermedad');
         $discapacidades = DB::select('SELECT id, descripcion FROM discapacidad');
 
         $genero= DB::select('SELECT id, nombre FROM data_maestra WHERE tipo=?',['genero']);
@@ -29,8 +29,11 @@ class CensoController extends Controller
         $nacionalidad= DB::select('SELECT id, nombre FROM data_maestra WHERE tipo=?',['nacionalidad']);
         $animales= DB::select('SELECT id, nombre FROM data_maestra WHERE tipo=?',['animales']);
         $plagas= DB::select('SELECT id, nombre FROM data_maestra WHERE tipo=?',['plaga']);
+         $enfermedades = DB::select('SELECT id, nombre FROM data_maestra WHERE tipo=?',['enfermedades']);
+         
         $id_sector = Auth::user()->id_sector;
         $sector = DB::select('SELECT id_sector AS id, sector AS nombre FROM sectores WHERE id_sector=?',[$id_sector]);
+
         return view('censoNuevo', compact('enfermedades', 'discapacidades', 'sector','genero','estado_civil','nivel_instruccion','nacionalidad','animales','plagas'));
     }
 
@@ -839,4 +842,19 @@ class CensoController extends Controller
         return 'Ok';
     }*/
 
+
+    public function consultaPersosa($cedula){
+
+           $sql_persona=DB::select("SELECT * FROM personas WHERE cedula=?",[$cedula]);
+
+    if ($sql_persona[0]->cedula=="" || $sql_persona[0]->cedula==null) {
+
+         echo json_encode(array('tipo'=>false));
+
+    }else{
+
+         echo json_encode(array('tipo'=>true,'cedula'=>$sql_persona[0]->cedula));
+         
+        }
+    }
 }

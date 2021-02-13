@@ -6,6 +6,7 @@
 @endsection
 
 @section('content')
+<script src="{{ asset('js/sweetalert2.js') }}"></script>
 <div class="container">
     <div class="row justify-content-center align-items-center"-->
     <div class="row">
@@ -123,7 +124,9 @@
                                         <select name="enfermedad" id="enfermedad" class="custom-select custom-select-lg mb-3">
                                             <option value="">seleccione</option>
                                             @foreach($enfermedades as $enfermedad)
-                                            <option value="{{ $enfermedad->id }}">{{ $enfermedad->descripcion }}</option>
+
+                                            <option value="{{ $enfermedad->id }}">{{ $enfermedad->nombre }}</option>
+
                                             @endforeach
                                         </select>
                                     </div>
@@ -163,10 +166,9 @@
                                     <div class="col-md-8">
                                         <select name="nivel_instruccion" id="nivel_instruccion" class="custom-select custom-select-lg mb-3" required>
                                             <option value="">seleccione</option>
-                                            <?php $contador_instruccion=0; ?>
+                                     
                                             @foreach($nivel_instruccion as $nivel_instruccions)
-                                            <?php $contador_instruccion++; ?>
-                                            <option value="{{ $contador_instruccion }}">{{ $nivel_instruccions->nombre }}</option>
+                                            <option value="{{ $nivel_instruccions->id }}">{{ $nivel_instruccions->nombre }}</option>
                                            
                                             @endforeach
                                         </select>
@@ -923,107 +925,10 @@
     var urlCensoListar = '{{ route("censoListar") }}';
 </script>
 <script src="{{ asset('js/validate-1.13.1.min.js') }}"></script>
-<script src="{{ asset('js/censo.min.js') }}"></script>
-<!-- Smoke -->
 <script src="{{ asset('js/smoke.min.js') }}"></script>
 <script src="{{ asset('lang/es.min.js ') }}"></script>
+<script src="{{ asset('js/censo.min.js') }}"></script>
+<script src="{{ asset('ajax/censoAjax.js') }}"></script>
 
-<script type="text/javascript">
-
-<<<<<<< HEAD
-=======
-$(document).ready(function(){
-$('#info_bombonas').hide();
-$('#info_cedula_familiar').hide();
-});
->>>>>>> 0f7a488e1084cde4ae46d7288d8152323ce7384f
-
-$('#cedula').click(function(e) {
-    e.preventDefault();
-  
-  if ($('#cedula').smkValidate()) {
-  
-    $.smkAlert({
-      text: 'Listo!',
-      type: 'success',
-      time: 2
-          });
-  //}else{
-    //alert("fallo");
-  }
-
-
-})
-<<<<<<< HEAD
-=======
-
->>>>>>> 0f7a488e1084cde4ae46d7288d8152323ce7384f
-
-
-$('#nombre').click(function(e) {
-    e.preventDefault();
-    //alert('Ingrese su nombre');
-  if ($('#nombre').smkValidate()) {
-    // Code here
-    $.smkAlert({
-      text: 'Listo!',
-      type: 'success',
-      patter:'A-Zaz',
-      time: 2
-          });
-  //}else{
-    //alert("fallo");
-  }
-
-});
-
-$('#apellido').click(function(e) {
-    e.preventDefault();
-    //alert('Ingrese apellido');
-  if ($('#apellido').smkValidate()) {
-    // Code here
-    $.smkAlert({
-      text: 'Listo!',
-      type: 'success',
-      time: 2
-          });
-  //}else{
-    //alert("fallo");
-  }
-
-})
-
-
-});
-
-function mostrar_bombonas(valor){
-
-if (valor==1) {
-$('#info_bombonas').show();
-
-}else{
-$('#info_bombonas').hide();
-}
-
-
-<<<<<<< HEAD
-=======
-}
-
-
-function mostrar_cedula_familiar(valor){
-
-
-if (valor==1) {
-$('#info_cedula_familiar').show();
-
-}else{
-$('#info_cedula_familiar').hide();
-}
-
-
-}
->>>>>>> 0f7a488e1084cde4ae46d7288d8152323ce7384f
-</script>
 
 @endsection

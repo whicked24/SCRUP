@@ -13,14 +13,13 @@
        
             </div>
             <h2>Censos</h2>
-<div class="row justify-content-end">
-    <div class="col-md-2">
-        <form id="nuevo" method="GET" action="{{ route('censoNuevo') }}">
-        <button type="submit" class="btn btn-round btn-primary btn-sm" >Nuevo Censo</button>
-    </form>
+
+
+<div class="container">
+     <div class="text-right">
+         <a href="{{ route('censoNuevo') }}"><i class="fas fa-plus fa-2x mx-1" data-toggle="tooltip" data-placement="bottom" title="Nuevo"></i></a>
         
-    </div>
-    
+   </div>  
 </div>
 <br><br>
             <table id="tablaCensos" class="table table-striped">
@@ -60,18 +59,16 @@
 @endsection
 
 @section("extraScript")
-    <script>
-        var token = $("meta[name='csrf-token']").attr("content");
-    </script>
-<<<<<<< HEAD
-    <script src="{{ asset('js/datatables.min.js') }}"></script>
-     <script>
-       var table = $('#datatable').DataTable({
-=======
- <script src="{{ asset('js/datatables.min.js') }}"></script>
+<script>
+var token = $("meta[name='csrf-token']").attr("content");
+</script>
+
+<script src="{{ asset('js/datatables.min.js') }}"></script>
+
+<script src="{{ asset('js/datatables.min.js') }}"></script>
      <script>
        var table = $('#tablaCensos').DataTable({
->>>>>>> 0f7a488e1084cde4ae46d7288d8152323ce7384f
+
     language: {
         "decimal": "",
         "emptyTable": "No hay información",

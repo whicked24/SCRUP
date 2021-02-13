@@ -9,11 +9,16 @@
     <div class="row justify-content-center align-items-center">
         <div class="col-md-12 text-center">
             <h2>Usuarios</h2>
-            <div class="text-right">
-                <a class="btn btn-md btn-primary" id="nuevoUsuario" href="{{ route('register') }}">Nuevo Usuario</a> 
+
+
+                     <div class="container">
+                       <div class="text-right">
+                
+      <a href="{{ route('register') }}"><i class="fas fa-plus fa-2x mx-1" data-toggle="tooltip" data-placement="bottom" title="Nuevo"></i></a>
+            </div>    
             </div>
             <br/>
-            <table id="tablaUsuarios" class="table table-striped">
+            <table id="datatable" class="table table-striped">
                 <thead>
                     <tr>
                         <th>Nombre</th>
@@ -56,6 +61,32 @@
 @endsection
 
 @section("extraScript")
+ <script src="{{ asset('js/datatables.min.js') }}"></script>
+     <script>
+       var table = $('#datatable').DataTable({
+    language: {
+        "decimal": "",
+        "emptyTable": "No hay información",
+        "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+        "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+        "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+        "infoPostFix": "",
+        "thousands": ",",
+        "lengthMenu": "Mostrar _MENU_ Entradas",
+        "loadingRecords": "Cargando...",
+        "processing": "Procesando...",
+        "search": "Buscar:",
+        "zeroRecords": "Sin resultados encontrados",
+        "paginate": {
+            "first": "Primero",
+            "last": "Ultimo",
+            "next": "Siguiente",
+            "previous": "Anterior"
+        }
+    },
+   
+});
+    </script>
     <script>
         var token = $("meta[name='csrf-token']").attr("content");
     </script>

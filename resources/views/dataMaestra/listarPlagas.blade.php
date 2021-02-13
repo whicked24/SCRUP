@@ -2,31 +2,27 @@
 
 @section('content')
 
-<div class="row justify-content-end">
-
-	<div class="col-md-2">
-	<form id="nuevo" method="GET" action="{{ route('formPlagas','plaga') }}">
-		<button type="submit" class="btn btn-round btn-primary btn-sm" >Nuevo</button>
-	</form>
-		
-	</div>
-
-</div>
 
 <div class="row justify-content-lg-center">
 <div class="col-md-4">
-		<h1>Listado de animales</h1>
+		<h1>Listado de Plagas</h1>
 </div>
 
-</div>
 
+</div>
+<div class="container">
+     <div class="text-right">
+ <a href="{{ route('adminDataFrom') }}"><i class="fas fa-plus fa-2x mx-1" data-toggle="tooltip" data-placement="bottom" title="Nuevo"></i></a>
+
+   </div>  
+</div>
 
 <div class="container table-responsive">
-<table class="table table-striped table-hover">
+<table class="table table-striped table-hover" id="datatable">
  <thead>
  	<tr>
  	<th>#</th>
- 	<th>Tipo</th>
+ 	
  	<th>Nombre</th>
  	<th>Codigo</th>
  	<th>Estatus</th>
@@ -38,11 +34,19 @@
  	@foreach($plagas as $plaga)
  	<tr>
  	<td>{{ $plaga->id }}</td>
- 	<td>{{ $plaga->tipo }}</td>
+ 	
  	<td>{{ $plaga->nombre }}</td>
  	<td>{{ $plaga->codigo }}</td>
  	<td>{{ $plaga->estatus }}</td>
-	<td><a href="" class="btn btn-primary btn-sm btn-round">Editar</a></td>
+	<td>
+<a href='{{ route("adminDataFrom",$plaga->id) }}'>
+<i class="far fa-edit fa-2x mx-1" data-toggle="tooltip" data-placement="bottom" title="Editar"></i>
+</a>
+<a href='{{ route("eliminarDatos",$plaga->id) }}'>
+<i class="far fa-times-circle fa-2x mx-1" data-toggle="tooltip" data-placement="bottom" title="Eliminar"></i>
+</a>
+
+	</td>
 
  	</tr>
  	@endforeach
@@ -52,4 +56,32 @@
 </div>
 @endsection
 
+@section("extraScript")
 
+ <script src="{{ asset('js/datatables.min.js') }}"></script>
+     <script>
+       var table = $('#datatable').DataTable({
+    language: {
+        "decimal": "",
+        "emptyTable": "No hay información",
+        "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+        "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+        "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+        "infoPostFix": "",
+        "thousands": ",",
+        "lengthMenu": "Mostrar _MENU_ Entradas",
+        "loadingRecords": "Cargando...",
+        "processing": "Procesando...",
+        "search": "Buscar:",
+        "zeroRecords": "Sin resultados encontrados",
+        "paginate": {
+            "first": "Primero",
+            "last": "Ultimo",
+            "next": "Siguiente",
+            "previous": "Anterior"
+        }
+    },
+   
+});
+    </script>
+@endsection

@@ -77,6 +77,46 @@ class JornadaController extends Controller
       
      echo json_encode(array('xml' => $xml ));
 }
+public function asignarJornadas($cedula){
+
+    $sql_persona=DB::select("SELECT * FROM personas WHERE cedula=?",[$cedula]);
+
+
+    
+      
+     $xml='';
+
+     if ($sql_persona[0]->cedula=="" || $sql_persona[0]->cedula==null) {
+
+            $xml.='<h5 class="card-header">La persona para el número de cédula <b>'.$cedula.'</b> no se encuentra censada </h5>';
+     
+     echo json_encode(array('xml' => $xml,'tipo'=>false));
+     }else{
+
+     $xml.='<div class="card">
+  <h5 class="card-header">Esta seguro que desea agregar a: </h5>
+  <div class="card-body">';
+
+     $xml.='<h5 class="card-title">Nombre: <b>'.strtoupper($sql_persona[0]->nombre) . " ".strtoupper($sql_persona[0]->apellido).'</b></h5>
+    <h5 class="card-title">Cedula: <b>'.$sql_persona[0]->cedula.'</b></h5>
+   ';
+
+     $xml.=' </div>
+</div>';
+echo json_encode(array('xml' => $xml,'tipo'=>true));
+     }
+
+
+  
+
+
+
+}
+
+
+
+
+
 
 
   public function eliminarJornadas($id){

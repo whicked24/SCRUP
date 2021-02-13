@@ -9,6 +9,7 @@ use DB;
 use Illuminate\Support\Facades\Validator;
 use Auth;
 use App\Charts\globalChart;
+use App;
 
 class DataMaestraController extends Controller
 {
@@ -107,6 +108,74 @@ $animales=DB::select("INSERT INTO data_maestra(tipo,nombre,codigo)VALUES(?,?,?)"
 
 
  return redirect('adminitracion/enfermedades');
+}
+public function listadoGeneral(){
+
+$tipos=DB::select("SELECT DISTINCT tipo FROM  public.data_maestra ");
+
+
+return view('dataMaestra.listadoGeneral',compact('tipos'));
+}
+
+
+
+
+public function formGeneral($name){
+
+$tipos=DB::select("SELECT * FROM  public.data_maestra WHERE tipo =?",[$name]);
+
+
+
+
+return view('dataMaestra.formGeneral',compact('tipos'));
+
+}
+
+
+
+
+
+
+
+
+
+////////////ACAAAAAAA///////////////////////////////
+public function adminDataFrom($id=null){
+
+    if ($id=="" || $id==null) {
+        $datos_sql=DB::select("SELECT DISTINCT tipo FROM data_maestra");
+       $datos="";
+    return view('dataMaestra.formGeneral',compact('datos','datos_sql'));
+    }else{
+
+       $datos=DB::select("SELECT * FROM  public.data_maestra WHERE id =?",[$id]); 
+       return view('dataMaestra.formGeneral',compact('datos'));
+    }
+
+
+
+
+}
+
+
+    public function agregarDatos(Request $request){
+
+$sql_insert=DB::select("INSERT INTO public.data_maestra(tipo,nombre,codigo)VALUES(?,?,?)",[$request->tipo,$request->nombre,$request->codigo]);
+
+
+return redirect()->route('home');
+}
+    public function editarDatos(Request $request,$id){
+$sql_insert=DB::select("UPDATE  public.data_maestra SET tipo=?,nombre=?,codigo=?,fkestatus=? WHERE id=?",[$request->tipo,$request->nombre,$request->codigo,$request->estatus,$id]);
+
+return redirect()->route('home');
+}
+    public function eliminarDatos($id){
+
+$sql_insert=DB::select("DELETE FROM  public.data_maestra  WHERE id=?",[$id]);
+
+return back();
+
 }
 
 }

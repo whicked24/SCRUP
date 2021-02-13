@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App;
 
 class HomeController extends Controller
 {
@@ -13,7 +14,9 @@ class HomeController extends Controller
      */
     public function __construct()
     {
+        
         $this->middleware('auth');
+
     }
 
     /**
@@ -23,6 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $tipos=App\tipoDatos::where('fkestatus','=',1)->where('menu','=',true)->orderBy('descripcion')->get();
+       
+        return view('home',compact('tipos'));
     }
 }

@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 |
 */
 
+
 Route::get('/','HomeController@index');
 
 Route::get('/home','HomeController@index')->name('home');
@@ -46,6 +47,8 @@ Route::get('/censo/estadistica/individual', 'CensoController@estadisticaIndividu
 Route::post('/censo/estadistica/individual/generar', 'CensoController@generarEstadisticaIndividual')->name('GenerarEstadisticaIndividual');
 
 Route::post('/censo/nuevo/guadar', 'CensoController@nuevoGuardar')->name('nuevoGuardar');
+
+Route::get('/censo/consultaPersosa/{cedula?}', 'CensoController@consultaPersosa')->name('consultaPersosa');
 
 Route::post('/datos/personales/get', 'DatosPersonalesController@getDatosPersonales')
 ->name('DatosPersonalesGet')->middleware('web');
@@ -94,9 +97,12 @@ Route::get('/jornada', 'JornadaController@listadoJornadas')->name('listadoJornad
 Route::get('/jornada/nuevo', 'JornadaController@formJornada')->name('formJornada');
 Route::post('/jornada/nuevo', 'JornadaController@addJornadas')->name('addJornadas');
 Route::get('/jornada/detalle/{id?}', 'JornadaController@detalleJornadas')->name('detalleJornadas');
+Route::get('/jornada/asignar/{id?}', 'JornadaController@asignarJornadas')->name('asignarJornadas');
 Route::get('/jornada/editar/{id?}', 'JornadaController@editarJornadasform')->name('editarJornadasform');
 Route::put('/jornada/editar/{id?}', 'JornadaController@editarJornadas')->name('editarJornadas');
 Route::delete('/jornada/eliminar/{id?}', 'JornadaController@eliminarJornadas')->name('eliminarJornadas');
+
+
 
 ////********************************************************************************************************///
 
@@ -130,7 +136,19 @@ Route::get('/adminitracion/jornadas', 'Tipo_jornadaController@listarTipo')->name
 Route::get('/adminitracion/jornadas/nuevo', 'Tipo_jornadaController@formTipo')->name('formTipo');
 Route::post('/adminitracion/jornadas', 'Tipo_jornadaController@agregarTipo')->name('agregarTipo');
 //*************************************************************************************************//
+Route::get('/adminitracion/tipos/listado', 'TipoDatosController@listadotipo')->name('listadotipo');
+
+Route::get('/adminitracion/tipos/form/{name?}', 'TipoDatosController@formTipo')->name('formTipo');
+
+Route::post('/adminitracion/tipos/', 'TipoDatosController@editarTipoDatos')->name('editarTipoDatos');
 //*************************************************************************************************//
+Route::get('/adminitracion/form/{id?}', 'DataMaestraController@adminDataFrom')->name('adminDataFrom');
+
+Route::post('/adminitracion/add/', 'DataMaestraController@agregarDatos')->name('agregarDatos');
+
+Route::put('/adminitracion/edit/{id?}', 'DataMaestraController@editarDatos')->name('editarDatos');
+Route::get('/adminitracion/delete/{id?}', 'DataMaestraController@eliminarDatos')->name('eliminarDatos');
+//*************************************************************************************************////*************************************************************************************************//
 Route::get('/beneficios', 'BeneficiosController@list_beneficios')->name('beneficios');
 
 Route::get('/imprimir', 'Generador@imprimir')->name('print');

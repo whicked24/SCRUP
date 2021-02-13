@@ -13,20 +13,20 @@
 <div class="row justify-content-end">
 	<div class="col-md-8">
 
-		<a href="{{ route('reporteJornadas') }}"  target="_blank" class="btn btn-round btn-sm btn-primary">PDF</a>
+		<a href="{{ route('reporteJornadas') }}"  target="_blank" class="btn btn-round btn-sm btn-primary"><i class="fas fa-file-download"></i></a>
 	
 
 	</div>
 
 	<div class="col-md-2">
-	<form id="nuevo" method="GET" action="{{ route('formJornada') }}">
-		<button type="submit" class="btn btn-round btn-primary btn-sm" >Nueva Jornada</button>
-	</form>
+	 <a href="{{ route('formJornada') }}"><i class="fas fa-plus fa-2x mx-1" data-toggle="tooltip" data-placement="bottom" title="Nuevo"></i></a>
 		
 	</div>
 
 </div>
-<br><br>
+
+
+
 @if(Session::has('msg'))
 <div class="row justify-content-end">
 	<div class="col-md-4">
@@ -125,12 +125,12 @@
 		<td class="text-center">{{ $jornadas->asunto }}</td>
 		<td class="text-center" style="display: inline-flex;">
 			<div style="padding: 5px;">
-		<button  id="ver" name="ver" class="btn btn-round btn-sm btn-success" onclick="return detalle('{{ $jornadas->id }}')" 	>Ver ...</button>
+		<button  id="ver" name="ver" class="btn btn-round btn-sm btn-success" onclick="return detalle('{{ $jornadas->id }}')" 	><i class="far fa-eye"></i></button>
 		</div>
 	@if($jornadas->fkestatus!=5)	
 <div style="padding: 5px;">
 
-	<a class="btn btn-round btn-sm btn-primary" href="{{ route('editarJornadasform',$jornadas->id) }}">Modificar</a>
+	<a class="btn btn-round btn-sm btn-primary" href="{{ route('editarJornadasform',$jornadas->id) }}">  <i class="far fa-edit " data-toggle="tooltip" data-placement="bottom" title="Editar Sector"></i></a>
 	
 </div>
 @endif
@@ -140,7 +140,7 @@
 	<form action="{{ route('eliminarJornadas',$jornadas->id) }}" method="POST">
 		{{ csrf_field() }}
 		{{ method_field('delete') }}
-		<button class="btn btn-round btn-sm btn-danger" >Eliminar</button>
+		<button class="btn btn-round btn-sm btn-danger" > <i class="far fa-times-circle " data-toggle="tooltip" data-placement="bottom" title="Eliminar Jornada"></i></button>
 			</form>
 </div>
 		
@@ -149,14 +149,14 @@
 	@if($jornadas->fkestatus==4)	
 		<td>
 <dir class="row">
-	<form action="{{ route('addjornadahistorico',$jornadas->id) }}" method="POST">
+	<form action="{{ route('addjornadahistorico',$jornadas->id) }}" method="POST" id="form_asignar" name="form_asignar" autocomplete="off">
 			{{ csrf_field() }}
 	
 	<div class="col-md-6">
-			<input type="text" name="cedula"  id="cedula" class="form-control" style="display: inline;">
+			<input type="text" name="cedula"  id="cedula" class="form-control" placeholder="Cédula Beneficiario" title="Cédula del Beneficiario" style="display: inline;">
 	</div>
 	<div class="col-md-4">
-			 <button type="submit" class="btn btn-round btn-primary btn-sm" style="display: inline;">Registrar</button>
+			 <button type="submit" class="btn btn-round btn-primary btn-sm" id="asginar" name="asignar" style="display: inline;">Asignar</button>
 	</div>
 </form>
 </dir>

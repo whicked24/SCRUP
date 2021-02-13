@@ -12,10 +12,14 @@
                    Consejo comunal Unidad San Juan ubicado en la Parroquia San Juan av.San Martin <br>Municipio libertador - Caracas </h4> 
             </div>
             <h2>Sectores</h2>
-            <div class="text-right">
-                <a class="btn btn-md btn-primary" id="nuevoSector" href="{{route('sectoresNuevo')}}">Nuevo Sector</a> 
+            <div class="container">
+                       <div class="text-right">
+                
+      <a href="{{route('sectoresNuevo')}}"><i class="fas fa-plus fa-2x mx-1" data-toggle="tooltip" data-placement="bottom" title="Nuevo"></i></a>
+            </div>    
             </div>
-            <table id="tablaSectores" class="table table-striped">
+
+            <table id="datatable" class="table table-striped" >
                 <thead>
                     <tr>
                         <th class="text-center">Número</th>
@@ -62,6 +66,32 @@
 @endsection
 
 @section("extraScript")
+ <script src="{{ asset('js/datatables.min.js') }}"></script>
+     <script>
+       var table = $('#datatable').DataTable({
+    language: {
+        "decimal": "",
+        "emptyTable": "No hay información",
+        "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+        "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+        "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+        "infoPostFix": "",
+        "thousands": ",",
+        "lengthMenu": "Mostrar _MENU_ Entradas",
+        "loadingRecords": "Cargando...",
+        "processing": "Procesando...",
+        "search": "Buscar:",
+        "zeroRecords": "Sin resultados encontrados",
+        "paginate": {
+            "first": "Primero",
+            "last": "Ultimo",
+            "next": "Siguiente",
+            "previous": "Anterior"
+        }
+    },
+   
+});
+    </script>
     <script>
         var token = $("meta[name='csrf-token']").attr("content");
     </script>
